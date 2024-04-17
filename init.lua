@@ -811,11 +811,34 @@ require('lazy').setup({
       --  Check out: https://github.com/echasnovski/mini.nvim
     end,
   },
+
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     opts = {
-      ensure_installed = { 'bash', 'c', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc' },
+      ensure_installed = {
+        'astro',
+        'bash',
+        'c',
+        'css',
+        'csv',
+        'dockerfile',
+        'fish',
+        'go',
+        'graphql',
+        'html',
+        'javascript',
+        'jsdoc',
+        'lua',
+        'luadoc',
+        'markdown',
+        'query',
+        'tsx',
+        'typescript',
+        'vim',
+        'vimdoc',
+        'yaml',
+      },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
