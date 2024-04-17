@@ -111,7 +111,7 @@ vim.opt.showmode = false
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.opt.clipboard = 'unnamedplus'
+-- vim.opt.clipboard = 'unnamedplus'
 
 -- Enable break indent
 vim.opt.breakindent = true
@@ -172,6 +172,37 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+
+-- [[ Prime Keymaps ]]
+
+vim.keymap.set('n', '<leader>pv', vim.cmd.Ex, { desc = 'netrw [P]roject [V]iew' })
+
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move selected lines down' })
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move selected lines up' })
+
+-- vim.keymap.set("n", "J", "mzJ`z", { desc = 'Move cursor to start of line on join' })
+vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = '[D]own & center cursor' })
+vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = '[U]p & center cursor' })
+vim.keymap.set('n', 'n', 'nzzzv', { desc = '[N]ext occurence & center cursor' })
+vim.keymap.set('n', 'N', 'Nzzzv', { desc = 'Prev occurence & center cursor' })
+
+vim.keymap.set('x', '<leader>p', '"_dP', { desc = '[D]elete without updating clipboard' })
+
+vim.keymap.set('n', '<leader>y', '"+y', { desc = '[Y]ank into system clipboard' })
+vim.keymap.set('v', '<leader>y', '"+y', { desc = '[Y]ank into system clipboard' })
+vim.keymap.set('n', '<leader>Y', '"+Y', { desc = '[Y]ank line into system clipboard' })
+
+vim.keymap.set('n', '<leader>d', '"_d', { desc = '[D]elete to void clipboard' })
+vim.keymap.set('v', '<leader>d', '"_d', { desc = '[D]elete to void clipboard' })
+
+-- make this work?
+-- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+
+-- Quickfix navigation
+vim.keymap.set('n', '<C-k>', '<cmd>cnext<CR>zz', { desc = 'Quickfix next item & center cursor' })
+vim.keymap.set('n', '<C-j>', '<cmd>cprev<CR>zz', { desc = 'Quickfix prev item & center cursor' })
+vim.keymap.set('n', '<leader>k', '<cmd>lnext<CR>zz', { desc = 'Quickfix next location & center cursor' })
+vim.keymap.set('n', '<leader>j', '<cmd>lprev<CR>zz', { desc = 'Quickfix prev location & center cursor' })
 
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
