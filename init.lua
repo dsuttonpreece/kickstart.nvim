@@ -580,6 +580,13 @@ require('lazy').setup({
         -- tsserver = {},
         vtsls = {},
         tailwindcss = {},
+        astro = {},
+        cssls = {},
+        cssmodules_ls = {},
+        html = {},
+        jsonls = {},
+        -- css_variables = {},
+        -- htmx = {},
 
         lua_ls = {
           -- cmd = {...},
