@@ -251,6 +251,7 @@ vim.opt.rtp:prepend(lazypath)
 --
 require('lazy').setup({
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+  'michaeljsmith/vim-indent-object',
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
