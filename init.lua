@@ -798,9 +798,12 @@ require('lazy').setup({
     end,
   },
 
-  { -- Highlight, edit, and navigate code
+  { -- Treesitter: Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter-context',
+    },
     opts = {
       ensure_installed = {
         'astro',
@@ -841,12 +844,28 @@ require('lazy').setup({
 
       ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup(opts)
+      require('treesitter-context').setup {
+        max_lines = 3, -- How many lines the window should span. Values <= 0 mean no limit.
+        min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
+        multiline_threshold = 1, -- Maximum number of lines to show for a single context
+      }
 
-      -- There are additional nvim-treesitter modules that you can use to interact
-      -- with nvim-treesitter. You should go explore a few and see what interests you:
-      --
+      -- Use this command to get colorscheme names
+      -- `lua print(vim.inspect(vim.api.nvim_get_hl(0, {})))`
+      local hl = vim.api.nvim_get_hl(0, { name = 'CursorLine' })
+
+      vim.cmd.hi 'TreesitterContextBottom guisp=Grey'
+      vim.cmd.hi 'TreesitterContextLineNumberBottom gui=underline guisp=Grey'
+      vim.api.nvim_set_hl(0, 'TreesitterContext', { bg = hl.bg })
+      vim.api.nvim_set_hl(0, 'TreesitterContextLineNumber', { bg = hl.bg })
+      vim.api.nvim_set_hl(0, 'TreesitterContextBottom', { bg = hl.bg, underline = true })
+      vim.api.nvim_set_hl(0, 'TreesitterContextLineNumberBottom', { bg = hl.bg, underline = true })
+
+      vim.keymap.set('n', '[c', function()
+        require('treesitter-context').go_to_context(vim.v.count1)
+      end, { silent = true })
+
       --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
-      --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
       --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     end,
   },
