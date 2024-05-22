@@ -1,15 +1,17 @@
 return {
-  'folke/zen-mode.nvim',
+  'shortcuts/no-neck-pain.nvim',
+  version = '*',
+
   opts = {
     window = {
-      width = 100,
+      width = 130,
     },
   },
   keys = {
     {
       mode = 'n',
       '<leader>z',
-      ':ZenMode<CR>',
+      ':NoNeckPain<CR>',
       desc = 'Toggle [Z]en mode',
     },
   },
