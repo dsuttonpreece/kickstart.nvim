@@ -22,11 +22,11 @@ return { -- Autoformat
   lazy = false,
   keys = {
     {
+      mode = 'n',
       '<leader>f',
       function()
         require('conform').format { async = true, lsp_fallback = true }
       end,
-      mode = '',
       desc = '[F]ormat buffer',
     },
     {
@@ -37,7 +37,7 @@ return { -- Autoformat
     },
   },
   opts = {
-    notify_on_error = false,
+    notify_on_error = true,
     format_on_save = function(bufnr)
       -- Disable "format_on_save lsp_fallback" for languages that don't
       -- have a well standardized coding style. You can add additional
@@ -50,14 +50,12 @@ return { -- Autoformat
     end,
     formatters_by_ft = {
       lua = { 'stylua' },
-      -- You can use a sub-list to tell conform to run *until* a formatter
-      -- is found.
-      javascript = { { 'prettierd', 'prettier' }, 'rustywind' },
-      javascriptreact = { { 'prettierd', 'prettier' }, 'rustywind' },
-      typescript = { 'prettierd', 'prettier' },
-      'rustywind',
-      typescriptreact = { 'prettierd', 'prettier' },
-      'rustywind',
+      markddown = { 'prettierd' },
+      json = { 'prettierd' },
+      javascript = { 'rustywind', 'prettierd' }, -- rustywind first in case `prettier-plugin-tailwindcss` is installed
+      javascriptreact = { 'rustywind', 'prettierd' },
+      typescript = { 'rustywind', 'prettierd' },
+      typescriptreact = { 'rustywind', 'prettierd' },
     },
   },
 }
