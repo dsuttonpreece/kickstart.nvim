@@ -261,7 +261,19 @@ require('lazy').setup({
   'michaeljsmith/vim-indent-object',
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  {
+    'numToStr/Comment.nvim',
+    opts = {
+      pre_hook = function()
+        require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook()
+        return vim.bo.commentstring
+      end,
+    },
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+      'JoosepAlviste/nvim-ts-context-commentstring',
+    },
+  },
 
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following Lua:
