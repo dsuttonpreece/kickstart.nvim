@@ -191,12 +191,13 @@ vim.keymap.set('n', 'N', 'Nzzzv', { desc = 'Prev occurence & center cursor' })
 
 vim.keymap.set('x', '<leader>p', '"_dP', { desc = '[D]elete without updating clipboard' })
 
-vim.keymap.set('n', '<leader>y', '"+y', { desc = '[Y]ank into system clipboard' })
-vim.keymap.set('v', '<leader>y', '"+y', { desc = '[Y]ank into system clipboard' })
+vim.keymap.set('n', '<leader>y', '"+y', { desc = '[y]ank into system clipboard' })
+vim.keymap.set('v', '<leader>y', '"+y', { desc = '[y]ank into system clipboard' })
 vim.keymap.set('n', '<leader>Y', '"+Y', { desc = '[Y]ank line into system clipboard' })
 
-vim.keymap.set('n', '<leader>d', '"_d', { desc = '[D]elete to void clipboard' })
-vim.keymap.set('v', '<leader>d', '"_d', { desc = '[D]elete to void clipboard' })
+vim.keymap.set('n', '<leader>d', '"_d', { desc = '[d]elete to void clipboard' })
+vim.keymap.set('v', '<leader>d', '"_d', { desc = '[d]elete to void clipboard' })
+vim.keymap.set('n', '<leader>D', '"_D', { desc = '[D]elete to void clipboard' })
 
 -- make this work?
 -- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
